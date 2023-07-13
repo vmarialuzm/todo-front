@@ -2,10 +2,11 @@ const tbody = document.querySelector("#tbody");
 
 async function getTask() {
     try {
+        1;
         const response = await fetch("http://127.0.0.1:8000/api/v1/todo/");
-        const data = await response.json();
+        const {ok, data} = await response.json();
         console.log("data",data);   
-        renderItems(data);
+        if (ok) renderItems(data);
     } catch (error) {
         console.log(`Error ${error}`);
     }
